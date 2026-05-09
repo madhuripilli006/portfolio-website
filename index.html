@@ -1,0 +1,591 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Pilli Madhuri | Portfolio</title>
+
+  <style>
+    :root {
+      --bg: #0f172a;
+      --text: #ffffff;
+      --card: rgba(255,255,255,0.08);
+      --border: rgba(255,255,255,0.1);
+      --accent: #3b82f6;
+      --muted: #94a3b8;
+    }
+
+    *{
+      margin:0;
+      padding:0;
+      box-sizing:border-box;
+      scroll-behavior:smooth;
+    }
+
+    body{
+      font-family: Arial, sans-serif;
+      background: linear-gradient(135deg, #0f172a, #111827, #1e293b);
+      color: var(--text);
+    }
+
+    .container{
+      width:90%;
+      max-width:1100px;
+      margin:auto;
+    }
+
+    /* NAVBAR */
+
+    .nav{
+      position:sticky;
+      top:0;
+      z-index:1000;
+      background: rgba(15,23,42,0.9);
+      backdrop-filter: blur(10px);
+      border-bottom:1px solid var(--border);
+    }
+
+    .nav-inner{
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+      padding:18px 0;
+    }
+
+    .logo{
+      font-size:28px;
+      font-weight:bold;
+    }
+
+    .logo span{
+      color:var(--accent);
+    }
+
+    .nav-links{
+      display:flex;
+      gap:25px;
+      align-items:center;
+    }
+
+    .nav-links a{
+      color:var(--muted);
+      text-decoration:none;
+      font-weight:600;
+      transition:0.3s;
+    }
+
+    .nav-links a:hover{
+      color:white;
+    }
+
+    .theme-btn{
+      background:var(--card);
+      color:white;
+      border:1px solid var(--border);
+      padding:10px 14px;
+      border-radius:12px;
+      cursor:pointer;
+      font-size:18px;
+    }
+
+    /* HERO */
+
+    .hero{
+      padding:80px 0;
+    }
+
+    .hero-grid{
+      display:grid;
+      grid-template-columns:1fr 1fr;
+      gap:40px;
+      align-items:center;
+    }
+
+    .badge{
+      display:inline-block;
+      padding:10px 18px;
+      border-radius:50px;
+      background:var(--card);
+      border:1px solid var(--border);
+      margin-bottom:20px;
+      color:#cbd5e1;
+    }
+
+    h1{
+      font-size:55px;
+      margin-bottom:20px;
+    }
+
+    .typing{
+      color:var(--accent);
+      text-shadow: 0 0 20px rgba(59,130,246,0.5);
+    }
+
+    .lead{
+      color:var(--muted);
+      line-height:1.8;
+      margin-bottom:25px;
+      font-size:18px;
+    }
+
+    .hero-actions{
+      display:flex;
+      gap:15px;
+      flex-wrap:wrap;
+    }
+
+    .btn{
+      padding:14px 22px;
+      border-radius:14px;
+      border:none;
+      cursor:pointer;
+      text-decoration:none;
+      font-weight:bold;
+      transition:0.3s;
+      display:inline-block;
+    }
+
+    .btn-primary{
+      background:linear-gradient(135deg,#3b82f6,#2563eb);
+      color:white;
+    }
+
+    .btn-secondary{
+      background:var(--card);
+      color:white;
+      border:1px solid var(--border);
+    }
+
+    .btn:hover{
+      transform:translateY(-3px) scale(1.03);
+      box-shadow:0 10px 30px rgba(59,130,246,0.3);
+    }
+
+    /* PROFILE CARD */
+
+    .profile-card{
+      background:var(--card);
+      border:1px solid var(--border);
+      border-radius:25px;
+      padding:25px;
+      transition:0.3s;
+    }
+
+    .profile-card:hover{
+      transform:translateY(-8px);
+      box-shadow:0 20px 40px rgba(59,130,246,0.15);
+    }
+
+    .profile-photo{
+      width:100%;
+      height: 360px;
+      border-radius:20px;
+      background-image:url('profile.jpeg');
+      background-size:cover;
+      background-position:center;
+      background-repeat:no-repeat;
+      margin-bottom:20px;
+    }
+
+    .profile-card h3{
+      font-size:28px;
+      margin-bottom:10px;
+    }
+
+    .profile-card p{
+      color:var(--muted);
+      line-height:1.6;
+    }
+
+    /* SECTIONS */
+
+    section{
+      padding:50px 0;
+      animation:fadeUp 1s ease;
+    }
+
+    .section-title{
+      font-size:38px;
+      margin-bottom:15px;
+    }
+
+    .section-subtitle{
+      color:var(--muted);
+      margin-bottom:30px;
+      line-height:1.7;
+    }
+
+    .card{
+      background:var(--card);
+      border:1px solid var(--border);
+      border-radius:22px;
+      padding:25px;
+      transition:0.3s;
+    }
+
+    .card:hover{
+      transform:translateY(-8px);
+      box-shadow:0 20px 40px rgba(59,130,246,0.15);
+    }
+
+    /* SKILLS */
+
+    .skill-list{
+      display:flex;
+      flex-wrap:wrap;
+      gap:15px;
+    }
+
+    .skill{
+      padding:12px 18px;
+      background:rgba(255,255,255,0.08);
+      border-radius:50px;
+      transition:0.3s;
+    }
+
+    .skill:hover{
+      transform:scale(1.08);
+      background:rgba(59,130,246,0.2);
+    }
+
+    /* PROJECTS */
+
+    .card-grid{
+      display:grid;
+      grid-template-columns:repeat(3,1fr);
+      gap:20px;
+    }
+
+    .tag{
+      display:inline-block;
+      padding:8px 12px;
+      border-radius:30px;
+      background:rgba(59,130,246,0.15);
+      margin-top:15px;
+      margin-right:10px;
+      color:#bfdbfe;
+      font-size:14px;
+    }
+
+    /* FOOTER */
+
+    footer{
+      text-align:center;
+      padding:30px 0;
+      color:var(--muted);
+    }
+
+    /* LIGHT THEME */
+
+    body.light-theme{
+      background:#f8fafc;
+      color:#0f172a;
+    }
+
+    body.light-theme .nav{
+      background:rgba(255,255,255,0.9);
+    }
+
+    body.light-theme .card,
+    body.light-theme .profile-card,
+    body.light-theme .skill{
+      background:white;
+      color:#0f172a;
+    }
+
+    body.light-theme .lead,
+    body.light-theme .section-subtitle,
+    body.light-theme p,
+    body.light-theme .nav-links a{
+      color:#334155;
+    }
+
+    body.light-theme .btn-secondary{
+      color:#0f172a;
+    }
+
+    /* RESPONSIVE */
+
+    @media(max-width:900px){
+      .hero-grid,
+      .card-grid{
+        grid-template-columns:1fr;
+      }
+
+      h1{
+        font-size:40px;
+      }
+    }
+
+    @keyframes fadeUp{
+      from{
+        opacity:0;
+        transform:translateY(25px);
+      }
+
+      to{
+        opacity:1;
+        transform:translateY(0);
+      }
+    }
+
+  </style>
+</head>
+
+<body>
+
+  <!-- NAVBAR -->
+
+  <nav class="nav">
+    <div class="container nav-inner">
+
+      <div class="logo">
+        My<span>Portfolio</span>
+      </div>
+
+      <div class="nav-links">
+        <a href="#home">Home</a>
+        <a href="#about">About</a>
+        <a href="#skills">Skills</a>
+        <a href="#projects">Projects</a>
+      </div>
+
+      <button id="themeToggle" class="theme-btn">
+        🌙
+      </button>
+
+    </div>
+  </nav>
+
+  <!-- HERO -->
+
+  <section class="hero container" id="home">
+
+    <div class="hero-grid">
+
+      <div>
+
+        <div class="badge">
+          Open for Internship Opportunities
+        </div>
+
+       <h1> 
+          Hello, I am
+          <span class="typing">Pilli Madhuri</span>
+        </h1>
+
+        <p class="lead">
+          I create clean, responsive, and user-friendly websites using HTML, CSS, and JavaScript.
+          I enjoy turning ideas into polished digital experiences.
+        </p>
+
+        <div class="hero-actions">
+
+          <a href="resume.pdf" download class="btn btn-secondary">
+            Download Resume
+          </a>
+
+          <a href="#projects" class="btn btn-primary">
+            View Projects
+          </a>
+
+        </div>
+
+      </div>
+
+      <div class="profile-card">
+
+        <div class="profile-photo"></div>
+
+        <h3>Pilli Madhuri</h3>
+<p style="color:#94a3b8; margin-top:15px;">
+Passionate about building modern, responsive, and interactive web experiences.
+</p>
+        <p>
+          Aspiring software developer passionate about frontend development,
+          clean UI design, and modern web technologies.
+        </p>
+
+      </div>
+
+    </div>
+
+  </section>
+
+  <!-- ABOUT -->
+
+  <section id="about" class="container">
+
+    <h2 class="section-title">About Me</h2>
+
+    <p class="section-subtitle">
+      Passionate learner focused on frontend development and modern technologies.
+    </p>
+
+    <div class="card">
+
+      <p>
+        I am an aspiring software developer passionate about creating responsive and modern websites.
+        I enjoy solving problems, learning new technologies, and building projects that improve my practical skills.
+      </p>
+
+    </div>
+
+  </section>
+
+  <!-- SKILLS -->
+
+  <section id="skills" class="container">
+
+    <h2 class="section-title">Skills</h2>
+
+    <p class="section-subtitle">
+      Technologies and tools I work with.
+    </p>
+
+    <div class="card">
+
+      <div class="skill-list">
+
+        <div class="skill">HTML</div>
+        <div class="skill">CSS</div>
+        <div class="skill">JavaScript</div>
+        <div class="skill">Python</div>
+        <div class="skill">Java</div>
+        <div class="skill">GitHub</div>
+
+      </div>
+
+    </div>
+
+  </section>
+
+  <!-- PROJECTS -->
+
+  <section id="projects" class="container">
+
+    <h2 class="section-title">Projects</h2>
+
+    <p class="section-subtitle">
+      Some projects I built during my learning journey.
+    </p>
+
+    <div class="card-grid">
+
+      <div class="card">
+
+        <h3>Portfolio Website</h3>
+
+        <p>
+          Responsive personal portfolio website with animations and theme switching.
+        </p>
+
+        <span class="tag">HTML</span>
+        <span class="tag">CSS</span>
+        <span class="tag">JavaScript</span>
+
+      </div>
+
+      <div class="card">
+
+        <h3>To-Do App</h3>
+
+        <p>
+          Simple productivity application using JavaScript and Local Storage.
+        </p>
+
+        <span class="tag">DOM</span>
+        <span class="tag">UI Design</span>
+
+      </div>
+
+      <div class="card">
+
+        <h3>Landing Page</h3>
+
+        <p>
+          Modern responsive landing page with smooth UI and animations.
+        </p>
+
+        <span class="tag">Responsive</span>
+        <span class="tag">Flexbox</span>
+
+      </div>
+
+    </div>
+
+  </section>
+
+  <!-- FOOTER -->
+
+  <footer>
+  </footer>
+  <!-- CONTACT -->
+
+<section id="contact" class="container">
+
+  <h2 class="section-title">Contact</h2>
+
+  <p class="section-subtitle">
+    Feel free to connect with me for internships, collaborations, or opportunities.
+  </p>
+
+  <div class="card">
+
+    <p><strong>Email:</strong> madhu897712@gmail.com</p>
+
+    <br>
+
+    <p>
+      <strong>LinkedIn:</strong>
+      <a href="https://www.linkedin.com/in/madhuri-pilli-a41742407"
+         target="_blank"
+         style="color:#60a5fa;">
+         linkedin.com/in/madhuri-pilli-a41742407
+      </a>
+    </p>
+
+    <br>
+
+    <p>
+      <strong>GitHub:</strong>
+      <a href="https://github.com/Madhuripilli006"
+         target="_blank"
+         style="color:#60a5fa;">
+         github.com/Madhuripilli006
+      </a>
+    </p>
+
+  </div>
+
+</section>
+
+<!-- FOOTER -->
+
+<footer>
+  © 2026 Pilli Madhuri | Built with HTML, CSS & JavaScript
+</footer>
+
+  <!-- JAVASCRIPT -->
+
+  <script>
+
+    const themeToggle = document.getElementById("themeToggle");
+
+    themeToggle.addEventListener("click", () => {
+
+      document.body.classList.toggle("light-theme");
+
+      if(document.body.classList.contains("light-theme")){
+        themeToggle.innerHTML = "☀️";
+      }
+      else{
+        themeToggle.innerHTML = "🌙";
+      }
+
+    });
+
+  </script>
+
+</body>
+</html>
