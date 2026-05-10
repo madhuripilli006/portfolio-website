@@ -18,7 +18,10 @@ app.get("/", (req, res) => {
 });
 
 const contactRoutes = require("./routes/contactRoutes");
+const projectRoutes = require("./routes/projectRoutes");
+
 app.use("/api/contact", contactRoutes);
+app.use("/api/projects", projectRoutes);
 
 const PORT = process.env.PORT || 5000;
 app.listen(PORT, () => {
